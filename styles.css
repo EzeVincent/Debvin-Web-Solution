@@ -1,0 +1,5449 @@
+*{
+    margin: 0px;
+    padding: 0;
+    box-sizing: border-box;
+}
+::-webkit-scrollbar{
+    width: 15px;
+}
+::-webkit-scrollbar-track{
+    background-color: var(--primary-color);
+   
+    
+}
+::-webkit-scrollbar-thumb{
+    background: linear-gradient(#008000, #ADFF2F);
+    border-radius: 15px;
+}
+body{
+    min-height: 100vh;
+    background-size: cover;
+    background-color: var(--primary-color);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-family: cursive, sans-serif;
+    color: var(--secondary-color);
+}
+@media (max-width: 768px) {
+      body {font-family: sans-serif, arial;}    
+}
+:root{
+    --primary-color: rgb(223, 221, 221);
+    --secondary-color: rgb(29, 29, 29);
+    --silver-color: rgba(219, 217, 217, 0.63);
+
+}
+.dark-theme{
+    --primary-color:  rgb(29, 29, 29);
+    --secondary-color:  rgb(255, 255, 255);
+    --silver-color: rgba(44, 43, 43, 0.555);
+}
+.active{
+    color: green;
+    border-style: solid;
+    border-color: green;
+    border-width: 2px;
+    padding: 0px 4px;
+    border-radius: 20px;
+}
+
+
+.mode{
+    margin-right: 30px;
+    border: none;
+    padding: 0px;
+    border-radius: 50px;
+    box-shadow: 2px 2px 2px rgba(31, 29, 29, 0.5);
+    min-width: 20px;
+    cursor: pointer;
+    height: 20px;
+    width: 60px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    font-size: 10px;
+    margin-bottom: 5px;
+}
+a{
+    text-decoration: none;
+    color: var(--secondary-color);
+}
+@keyframes loading {
+    from{
+         transform: rotate(0turn);
+    }
+    to{
+        transform: rotate(1turn);
+    }
+} 
+
+.loader{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+    transition: 1s, visibility 1s;
+}
+.loader img{
+    height: 100px;
+    animation: rotate 1s ease infinite;
+    
+}
+@keyframes rotate {
+    from{
+      transform: rotate(0turn);
+    }
+    to{
+        transform: rotate(1turn);
+    }
+}
+.disapear{
+    opacity: 0;
+    visibility: hidden;
+}
+
+header{
+    position: relative;
+}
+.whatsapp{
+    position: fixed;  
+    right: 1px;
+    bottom:0px;
+    width: 50px; 
+    z-index: 10;
+}
+
+main{
+    flex: 1;
+}
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--primary-color);
+    position: fixed;
+    z-index: 10;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    height: 55px; 
+    box-shadow: 0px 0px 4px rgb(207, 207, 207);
+  
+}
+
+.nav-logo{
+    margin-right: auto;
+    flex-shrink: 0;
+    margin-left: 0px;  
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+  .logos1{
+    height: 120px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    display: inline-block;
+    flex-shrink: 0;
+    margin-left: 20px;
+    align-items: center;
+    
+  }   
+   
+.navul{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    margin-right: auto;
+    
+}
+.sidebar{
+    display: none;
+    flex-direction: column;
+    list-style: none;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 220px;
+    height: 100vh;
+    z-index: 3;
+    background-color: var(--primary-color);
+    box-shadow: -5px 0 4px rgba(228, 226, 226, 0.5);
+    backdrop-filter: blur(10px);
+}
+.sidebar li{
+    width: 100px;
+    margin-bottom: 20px;
+}
+.sidebar a{
+    width: 100%;
+}
+.sidebar-get-a-quote{
+    margin-top: 50px;
+    margin-left: 20px;
+    margin-right: 30px;
+    background-color: green;
+    color: var(--primary-color);
+    font-size: 12px;
+    border: none;
+    padding: 5px 6px;
+    border-radius: 30px;
+    box-shadow: 2px 2px 2px rgba(31, 29, 29, 0.5);
+    flex-shrink: 0;
+    width: 90px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.sidebar-get-a-quote:hover{
+    background-color: greenyellow;
+    color: black;
+}
+.menu-list{
+  margin-left: 20px;
+  flex-shrink: 0;
+  position: relative;
+  color: var(--secondary-color);
+}
+.menu-list svg{
+    margin-top: 3px;
+    margin-bottom: -4px;
+}
+.after-arrow{
+    display: none;   
+}
+.menu-list:hover .after-arrow{
+    display: inline;
+}
+.menu-list:hover .before-arrow{
+    display: none;
+}
+.menu-list ul{
+    left: -40px;
+    top: 24px;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    list-style: none;
+    position: absolute;
+    height: auto;
+    width: 160px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    display: none;
+    
+}
+.menu-list ul li{
+     margin: 10px;
+     text-align: center;
+}
+.menu-list:hover ul{
+    display: block;
+}
+
+.sidebar-menu-list{
+    margin-left: 20px;
+    flex-shrink: 0;
+  }
+.get-a-quote{
+    margin-left: 30px;
+    margin-right: 15px;
+    background-color: green;
+    color: var(--primary-color);
+    font-family: cursive;
+    font-size: 12px;
+    border: none;
+    padding: 5px 6px;
+    border-radius: 30px;
+    box-shadow: 2px 2px 2px rgba(31, 29, 29, 0.5);
+    flex-shrink: 0;
+    min-width: 90px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.get-a-quote:hover{
+    background: linear-gradient(green, greenyellow);
+    color: black;
+}
+.menu{
+margin-right: 30px;
+cursor: pointer;
+display: none;
+}
+.close{
+    margin-left: 15px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+@media (max-width: 800px){
+    .menu-list{
+        display: none;
+    }
+    .get-a-quote{
+        display: none;
+    }
+    .menu{
+        display: block;
+    }
+}
+@media (max-width: 820px){
+    .sidebar{
+        display: none;
+
+    }
+}
+.menu-list a{
+    text-decoration: none;
+    color: var(--secondary-color);
+}
+.menu-list a:hover{
+    text-decoration: none;
+    color: green;
+    
+}
+.menu-list:hover{
+    
+    fill: green;
+    text-decoration: none;
+    color: green;
+}
+
+.sidebar-menu-list a{
+    text-decoration: none;
+    color: var(--secondary-color);
+}
+.sidebar-menu-list a:hover{
+    text-decoration: none;
+    color: green;
+    
+}
+.sidebar-menu-list:hover{
+    border-bottom: green;
+    border-bottom-style: solid;
+    border-color: green;
+    border-width: 2px;
+    fill: green;
+    text-decoration: none;
+    color: green;
+}
+.sidebar-menu-list div:current{
+    text-decoration: none;
+    color: var(--primary-color);
+}
+main{
+    margin-top: 85px;
+    margin-bottom: 40px;
+    margin-left: 100px;
+    margin-right: 0px;
+}
+.landing-image{
+    background-image: url(images/desktop_image.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+    margin-top: 55px;
+    margin-bottom: 0px;
+    width: 100%;
+    min-height: 400px;
+}
+.hero{
+    background-color: rgb(20, 20, 20, 0.6);
+    height: 100%;
+    min-height: 400px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding-left: 0px;
+    position: relative;
+    margin-bottom: 0px;
+}
+h1{
+    
+    color: white ;
+    opacity: 1;
+    font-size: 50px;
+    margin-left: 40px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+   
+    
+}
+.sp1{
+    animation-name: sp01;
+    animation-delay: 1s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    transition: ease-in;
+    opacity: 0;
+}
+
+@keyframes sp01 {
+0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.sp2{
+    animation-name: sp02;
+    animation-delay: 1.3s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    transition: ease-in;
+    opacity: 0;
+}
+
+@keyframes sp02 {
+0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.sp3{
+    animation-name: sp03;
+    animation-delay: 1.6s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    transition: ease-in;
+    opacity: 0;
+}
+
+@keyframes sp03 {
+0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.sp4{
+    animation-name: sp04;
+    animation-delay: 1.9s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    transition: ease-in;
+    opacity: 0;
+}
+
+@keyframes sp04 {
+0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.sp5{
+    animation-name: sp05;
+    animation-delay: 2.2s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    transition: ease-in;
+    opacity: 0;
+}
+
+@keyframes sp05 {
+0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.sp6{
+    animation-name: sp06;
+    animation-delay: 2.5s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    transition: ease-in;
+    opacity: 0;
+}
+
+@keyframes sp06 {
+0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.sp7{
+    animation-name: sp07;
+    animation-delay: 2.8s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    transition: ease-in;
+    opacity: 0;
+}
+
+@keyframes sp07 {
+0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.sp8{
+    animation-name: sp08;
+    animation-delay: 3.1s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    transition: ease-in;
+    opacity: 0;
+}
+
+@keyframes sp08 {
+0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.sp9{
+    animation-name: sp09;
+    animation-delay: 3.4s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    transition: ease-in;
+    opacity: 0;
+}
+
+@keyframes sp09 {
+0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.sp10{
+    animation-name: sp010;
+    animation-delay: 3.7s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    transition: ease-in;
+    opacity: 0;
+}
+
+@keyframes sp010 {
+0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.sp11{
+    animation-name: sp011;
+    animation-delay: 4s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    transition: ease-in;
+    opacity: 0;
+}
+
+@keyframes sp011 {
+0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.sp12{
+    animation-name: sp012;
+    animation-delay: 4.3s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    transition: ease-in;
+    opacity: 0;
+}
+
+@keyframes sp012 {
+0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.sp13{
+    animation-name: sp013;
+    animation-delay: 4.6s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    transition: ease-in;
+    opacity: 0;
+}
+
+@keyframes sp013 {
+0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.sp14{
+    animation-name: sp014;
+    animation-delay: 4.9s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    transition: ease-in;
+    opacity: 0;
+}
+
+@keyframes sp014 {
+0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.sp15{
+    animation-name: sp015;
+    animation-delay: 5.2s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    transition: ease-in;
+    opacity: 0;
+}
+
+@keyframes sp015 {
+0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.sp16{
+    animation-name: sp016;
+    animation-delay: 5.5s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    transition: ease-in;
+    opacity: 0;
+}
+
+@keyframes sp016 {
+0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.sp17{
+    animation-name: sp017;
+    animation-delay: 5.8s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    transition: ease-in;
+    opacity: 0;
+}
+
+@keyframes sp017 {
+0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.sp18{
+    animation-name: sp018;
+    animation-delay: 6.1s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    transition: ease-in;
+    opacity: 0;
+}
+
+@keyframes sp018 {
+0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.sp19{
+    animation-name: sp019;
+    animation-delay: 6.4s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    transition: ease-in;
+    opacity: 0;
+}
+
+@keyframes sp019 {
+0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.sp20{
+    animation-name: sp020;
+    animation-delay: 6.7s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    transition: ease-in;
+    opacity: 0;
+}
+
+@keyframes sp020{
+0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.sp21{
+    animation-name: sp021;
+    animation-delay: 7s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    transition: ease-in;
+    opacity: 0;
+}
+
+@keyframes sp021 {
+0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.sp22{
+    animation-name: sp022;
+    animation-delay: 7.3s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    transition: ease-in;
+    opacity: 0;
+}
+
+@keyframes sp022 {
+0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.sp23{
+    animation-name: sp023;
+    animation-delay: 7.6s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    transition: ease-in;
+    opacity: 0;
+}
+
+@keyframes sp023 {
+0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.hero h2{
+    position: relative;
+    animation-name: heroh2;
+    animation-delay: 3s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    
+}
+
+@keyframes heroh2 {
+    0% {left: -500px; opacity: 0;}
+    100% {left: 0; opacity: 1;}
+}
+.herop{
+    position: relative;
+    animation-name: herop;
+    animation-delay: 5s;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    
+}
+
+@keyframes herop {
+    0% {left: -1000px; opacity: 0;}
+    100% {left: 0; opacity: 1;}
+}
+.btn1{
+    animation-name: btn01;
+    animation-delay: 7s;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    transition: ease-in;
+    opacity: 0;
+}
+
+@keyframes btn01 {
+0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.btn2{
+    animation-name: btn02;
+    animation-delay: 7s;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    transition: ease-in;
+    opacity: 0;
+}
+
+@keyframes btn02 {
+0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+h2{
+    color: white;
+    opacity: 1;
+    font-size: 25px;
+    margin-left: 40px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+
+.herop{
+    color: white;
+    margin-left: 40px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    max-width: 600px;
+    margin-bottom: 10px;
+    opacity: 0;
+}
+
+.btn1{
+    width: auto;
+    border: none;
+    border-radius: 6px;
+    height: 25px;
+    min-width: 80px;
+    align-items: center;
+    justify-content: center;
+    margin-left: 40px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    background: linear-gradient(green,greenyellow);
+    color: black;
+    font-size: 12px;
+    border: none;
+    padding: 3px 6px;
+    border-radius: 30px;
+    box-shadow: 2px 2px 2px rgba(58, 58, 58, 0.5);
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 0.3s;
+    display: inline-block;
+    opacity: 0;
+    
+}
+.btn2{
+    min-width: 90px;
+    border: solid;
+    border-style: solid;
+    border-color: green;
+    border-width: 4px;
+    border-radius: 6px;
+    height: 28px;
+    margin-left: 50px;
+    margin-right: 30px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    color: black;
+    font-size: 12px;
+    padding: 0px 3px;
+    border-radius: 30px;
+    box-shadow: 2px 2px 2px rgba(58, 58, 58, 0.5);
+    flex-shrink: 0;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255, 0.9);
+    transition: 0.3s;
+    display: inline-block;
+    text-align: center;
+    opacity: 0;
+}
+.btn3{
+    width: auto;
+    border: none;
+    border-radius: 6px;
+    height: 25px;
+    min-width: 90px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    background: linear-gradient(green,greenyellow);
+    color: black;
+    font-size: 12px;
+    border: none;
+    padding: 3px 6px;
+    border-radius: 30px;
+    box-shadow: 2px 2px 2px rgba(58, 58, 58, 0.5);
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 0.3s;
+    display: block;
+    
+}
+
+.btn3:hover{
+    background: green;
+    color: white;
+    
+}
+.btn1:hover{
+    background: green;
+    color: white;
+    
+}
+.btn2:hover{
+    opacity: 1;
+    border-color: greenyellow;
+}
+.hero-btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+
+.shape0{
+    
+    border-style: none;
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: -13px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape1{
+    border-style: none;
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 143px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape2{
+    border-style: none;
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 13px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape3{
+    border-style: none;
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 26px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape4{
+    border-style: none;
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 39px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape5{
+    border-style: none;
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 52px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape6{
+    border-style: none;
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 65px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape7{
+    border-style: none;
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 0px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape8{
+    border-style: none;
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 78px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape9{
+    border-style: none;
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 91px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape10{
+    border-style: none;
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 104px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape11{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 117px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape12{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 130px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+   
+}
+.shape13{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 156px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape14{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 169px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape15{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 182px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape16{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 195px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape17{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 208px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape18{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 221px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape19{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 234px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape20{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 247px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape21{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 260px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape22{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 273px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape23{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 286px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape24{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 299px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape25{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 312px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape26{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 325px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape27{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 338px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape28{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 351px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape29{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 78px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape30{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 364px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape31{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 377px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape32{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 390px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape33{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 403px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape34{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 416px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape35{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 429px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape36{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 442px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape37{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 455px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape38{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 468px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape39{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 481px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape40{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 494px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape41{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 507px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape42{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 520px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape43{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 533px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape44{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 546px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape45{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 559px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape46{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 572px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape47{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 585px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape48{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 598px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape49{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 611px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape50{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 624px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape51{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 637px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape52{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 650px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape53{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 663px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape54{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 676px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape55{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 689px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape56{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 702px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape57{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 715px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape58{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 728px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape59{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 741px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape60{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 754px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape61{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 767px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape62{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 780px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape63{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 793px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape64{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 806px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape65{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 819px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape66{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 832px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape67{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 845px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape68{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 858px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape69{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 871px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape70{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 884px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape71{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 897px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape72{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 910px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape73{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 923px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape74{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 936px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape75{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 949px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape76{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 962px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape77{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 975px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape78{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 988px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape79{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1001px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape80{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1014px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape81{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1027px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape82{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1040px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape83{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1053px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape84{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1066px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape85{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1079px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape86{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1092px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape87{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1105px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape88{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1118px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape89{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1131px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape90{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1144px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape91{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1157px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape92{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1170px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape93{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1183px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape94{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1196px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape95{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1209px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape96{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1222px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape97{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1235px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape98{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1248px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape99{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1261px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape100{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1274px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape101{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1287px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape102{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1300px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape103{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1313px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape104{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1326px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape105{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1339px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape106{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1352px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape107{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1365px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape108{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1378px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape109{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1391px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape110{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1404px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape111{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1417px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape112{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1430px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape113{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1443px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape114{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1456px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape115{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1469px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape116{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1482px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape117{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1495px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape118{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1508px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape119{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1521px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape120{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1534px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape121{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1547px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape122{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1560px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+.shape123{
+    background-color: var(--primary-color);
+    min-height: 18px;
+    min-width: 18px;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10;
+    bottom: -1px;
+    margin-left: 1573px;
+    clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+}
+@media (max-width: 800px) {
+ 
+
+    .shape0{
+        display: none;
+        border-style: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: -13px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape1{
+        display: none;   
+        border-style: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 143px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape2{
+        display: none;
+        border-style: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 13px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape3{
+        display: none;
+        border-style: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 26px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape4{
+        display: none;
+        border-style: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 39px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape5{
+        display: none;
+        border-style: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 52px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape6{
+        display: none;
+        border-style: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 65px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape7{
+        display: none;
+        border-style: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 0px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape8{
+        display: none;
+        border-style: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 78px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape9{
+        display: none;
+        border-style: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 91px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape10{
+        display: none;
+        border-style: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 104px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape11{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 117px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape12{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 130px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+       
+    }
+    .shape13{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 156px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape14{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 169px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape15{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 182px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape16{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 195px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape17{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 208px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape18{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 221px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape19{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 234px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape20{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 247px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape21{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 260px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape22{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 273px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape23{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 286px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape24{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 299px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape25{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 312px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape26{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 325px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape27{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 338px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape28{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 351px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape29{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 78px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape30{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 364px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape31{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 377px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape32{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 390px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape33{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 403px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape34{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 416px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape35{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 429px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape36{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 442px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape37{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 455px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape38{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 468px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape39{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 481px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape40{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 494px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape41{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 507px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape42{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 520px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape43{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 533px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape44{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 546px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape45{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 559px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape46{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 572px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape47{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 585px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape48{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 598px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape49{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 611px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape50{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 624px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape51{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 637px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape52{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 650px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape53{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 663px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape54{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 676px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape55{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 689px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape56{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 702px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape57{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 715px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape58{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 728px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape59{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 741px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape60{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 754px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape61{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 767px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape62{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 780px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape63{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 793px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape64{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 806px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape65{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 819px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape66{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 832px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape67{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 845px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape68{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 858px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape69{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 871px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape70{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 884px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape71{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 897px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape72{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 910px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape73{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 923px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape74{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 936px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape75{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 949px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape76{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 962px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape77{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 975px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape78{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 988px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape79{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1001px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape80{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1014px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape81{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1027px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape82{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1040px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape83{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1053px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape84{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1066px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape85{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1079px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape86{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1092px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape87{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1105px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape88{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1118px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape89{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1131px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape90{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1144px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape91{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1157px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape92{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1170px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape93{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1183px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape94{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1196px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape95{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1209px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape96{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1222px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape97{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1235px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape98{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1248px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape99{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1261px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape100{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1274px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape101{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1287px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape102{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1300px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape103{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1313px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape104{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1326px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape105{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1339px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape106{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1352px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape107{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1365px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape108{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1378px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape109{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1391px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape110{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1404px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape111{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1417px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape112{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1430px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape113{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1443px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape114{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1456px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape115{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1469px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape116{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1482px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape117{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1495px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape118{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1508px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape119{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1521px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape120{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1534px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape121{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1547px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape122{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1560px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+    .shape123{
+        display: none;
+        background-color: var(--primary-color);
+        min-height: 18px;
+        min-width: 18px;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        left: 10;
+        bottom: -1px;
+        margin-left: 1573px;
+        clip-path: polygon(50% 0%, 17% 100%, 85% 100%);
+    }
+}
+/* INDUSTRIES*/
+.ind{
+    display: flex;
+    margin-top: 0px;
+    margin-right: 40px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0px;
+    box-shadow: 0px 5px 0px rgb(6, 245, 38, 0.3);
+    overflow: hidden;
+  
+}
+.ind1{
+    flex: 1;
+    font-weight: bold;
+    margin-top: 30px;
+    padding-right: 5px;
+    font-size: 14px;
+    margin-left: 0px;
+ 
+}
+
+.ind1 span{
+    color: green;
+}
+.ind2 svg{
+    height: 50px;
+    width: 50px;
+}
+.ind2{
+    font-size: 12px;
+    flex-direction: row;
+    justify-content: space-between;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    display: flex;
+}
+.ind:hover .ind2 div{
+    animation-play-state: paused;
+    border-color: greenyellow;
+}
+.ind2 div{
+      
+     
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      margin: 20px;
+      min-width: 170px;
+      width: 100%;
+      background-color: var(--primary-color);
+      color: var(--secondary-color);
+      border: solid;
+      border-color: green;
+      padding: 5px;
+      border-top-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      height: 100px;
+      animation: 60s slide infinite linear;
+      text-align: center;
+
+      
+}
+@keyframes slide {
+    from{
+         transform: translateX(0);
+    }
+    to{
+        transform: translateX(-2000%);
+    }
+}
+
+
+/*FOOTER*/
+footer{ 
+    height: auto;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 40px;
+    
+
+}
+
+footer p{
+    
+    color: white;
+}
+footer a{
+    text-decoration: none;
+    color: white;
+}
+.footer-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+    gap: auto;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    font-size: 12px;
+    line-height: 20px;
+}
+.footer-logo-address{
+    flex: 1;
+    width: 100%;
+    min-width: 300px;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    line-height: 26px;
+}
+.footer-address{
+    margin-left: 20px;
+    margin-top: -40px;
+}
+.footer-services{
+    flex: 1;
+    width: auto;
+    margin-right: 0px;
+    margin-left: 0px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+.social-icons{
+    flex: 1;
+    width: auto;
+    margin-right: 20px;
+    margin-left: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.black-logo{
+    height: 140px;
+    display: block;
+}
+
+.social-icons{
+    padding-left: 60px;
+    margin-left: 50px; 
+    cursor: pointer;
+    flex: 1;
+}
+.social-icons svg:hover{
+    opacity: 0.7;
+    cursor: pointer;
+     
+}
+
+.top-bar span{
+    padding-top: 5px;
+    margin-right: 0px;
+    margin-left: 10px;
+    font-size: 12px;
+  
+}
+.last-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 0px;
+    margin-right: 60px;
+}
+.last-div div{
+    font-size: 10px;
+    margin-top: 10px;
+
+}
+@media (max-width: 800px){
+    .footer-section{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .footer-logo-address{
+        flex: 1;
+        align-items: center;
+    }
+    .footer-address{
+        align-items: center;
+        text-align: center;
+    }
+    .footer-services{
+       flex: 1;
+       align-items: center;
+       margin-left: 0px;
+       margin-top: 20px;
+    }
+    .social-icons{
+        flex: 1;
+        align-items: center;
+        margin-left: 0px;
+        margin-top: 20px;
+    }
+    .last-div{
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        align-items: center;
+    }
+    .last-div div{
+        flex: 1;
+        align-items: center;
+        text-align: center;
+        margin: 4px 0px;
+    }
+}
+
+
+/* What We do section*/
+
+
+.section3{
+display: flex;
+position: relative;
+flex-direction: column;
+justify-content: space-between;
+border-style: none;
+height: 100%;
+width: 100%;
+margin-top: 20px;
+margin-bottom: 0px;
+padding-bottom: 30px;
+padding-top: 30px;
+background-color: var(--primary-color);
+}
+.card-side h2{
+    color: #008000;
+    text-align: center;
+    font-size: 34px;
+    margin-top: 0px;
+}
+.card-side p{
+    text-align: center;
+    color: var(--secondary-color);
+    margin: 0px;
+    word-wrap: wrap;
+    
+}
+.section3-2{
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-bottom: 20px;
+    
+}
+@media (max-width: 600px){
+    .desktop img{
+        width: 250px;
+        max-width: 200px;
+        margin-top: 30px;
+        
+    }
+}
+.card-side{
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+.desktop{
+    max-width: 550px;
+}
+.desktop img{
+    width: auto;
+    max-width: 500px;
+    margin-top: 30px;
+}
+
+
+@media(max-width: 880px){
+    .section3-2{
+     flex-direction: column;
+     flex: 1;
+     justify-content: center;
+     align-items: center;
+     margin-bottom: 0px;
+     height: auto;
+     min-height: auto;
+    }
+    .desktop img{
+        width: auto;
+        max-width: 350px;
+        margin-top: 10px;
+    }
+    .section3-1 h2{
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-right: 40px;
+        z-index: 2;
+    }
+    .section3-4{
+        flex-direction: row;
+        height: 80px;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30px;
+      
+      
+    }
+    .card{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 270px;
+        height: 320px;
+        margin: 20px;
+        padding: 0px;
+        
+    }      
+}
+.section3-4{
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.card{
+    height: 320px;
+    width: 270px;
+    margin: 20px auto;
+    cursor: pointer;
+    border-radius: 15px;
+    z-index: 1;
+}
+.inner-box{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border-radius: 15px;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+}
+.cardfront{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 270px;
+    height: 320px;
+    color: var(--primary-color);
+    backface-visibility: hidden;
+    background-color: var(--primary-color);
+    border-radius: 15px;
+    position: absolute;
+    border-style: solid;
+    border-width: 2.5px;
+    border-color: green;
+    box-shadow: -1px -1px 1px rgba(14, 116, 5, 0.7),
+                1px 1px 1px rgba(245, 245, 245, 0.7),
+                inset -1px -1px 1px rgba(3, 78, 25, 0.7),
+                inset 1px 1px 1px rgba(236, 236, 236, 0.7);
+}
+
+.cardback{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 270px;
+    height: 320px;
+    color: var(--secondary-color);
+    backface-visibility: hidden;
+    background-color: var(--secondary-color, 0.9);
+    border-radius: 15px;
+    transform: rotateY(180deg);
+    position: absolute;
+    background-color: green;
+    box-shadow: 0px 4px 6px rgba(7, 245, 47, 0.3);
+}
+.card:hover .inner-box{
+    transform: rotateY(-180deg);
+    
+}
+.image-house{
+    position: relative;
+    border: solid;
+    border-color: green;
+    border-style: solid;
+    border-width: 6px;
+    margin: 0px;
+    border-radius: 165px;
+    height: 250px;
+    width: 250px;
+    animation-name: wedo;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+@keyframes wedo{
+    0%{top: 0px; bottom: 0px;}
+    50%{top: 20px; bottom: 0px;}
+    100%{top: 0px; bottom: 0px;}
+}
+.image-house:hover{
+    border: solid;
+    border-style: solid;
+    border-width: 6px;
+    border-radius: 165px;
+    height: 250px;
+    width: 250px;
+    cursor: pointer;
+    margin-left: -3px;
+    margin-top: -3px;
+    animation-play-state: paused;
+}
+.image-house img{
+    height: 244px;
+    width: 244px;
+    border-radius: 165px;
+    margin-left: -3px;
+    margin-top: -3px;
+}
+.section3-1 h2{
+    color: green;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.cardfront h3{
+    align-items: center;
+    text-align: center;
+    margin-bottom: 15px;
+}
+.cardback h3{
+    color: var(--secondary-color);
+    cursor: pointer;
+    margin-top: 2px;
+    margin-bottom: 4px;
+}
+.cardback p{
+    color: var(--secondary-color);
+    align-items: center;
+    text-align: center; 
+    margin: 1px 4px;
+    line-height: 20px;
+}
+.section3-button{
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 6px;
+    background-color: rgb(127, 199, 18);
+    color: var(--secondary-color);
+    font-family: cursive;
+    font-size: 12px;
+    border: none;
+    padding: 5px 6px;
+    border-radius: 30px;
+    box-shadow: 2px 2px 2px rgba(31, 29, 29, 0.5);
+    flex-shrink: 0;
+    min-width: 90px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+.section3-button:hover{
+    opacity: 0.9;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+/*WHO WE ARE SECTION*/
+.section4{
+    background-color: var(--silver-color);
+    height: 100%;
+    width: 100%;
+    box-shadow: 0px 5px 0px rgb(6, 245, 38, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 40px;
+  
+}
+
+.section4 h2{
+    color: green;
+    text-align: center;
+    align-items: center;
+    margin-left: 0px;
+    margin-top: 30px;
+}
+fieldset{
+ height: auto;
+ width: 95%;
+ border-color: green;
+ border-width: 3px;
+ border-radius: 10px;
+ padding: 10px;
+ color: green;
+ margin-left: 0px;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+
+}
+
+fieldset legend{                                                                                             
+    font-size: 22px;
+    font-weight: bold;
+}
+fieldset p{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    
+}
+.accordionhd h3{
+ 
+ color: white;
+ font-size: 14px;
+}
+@media (max-width: 600px) {
+    .accordionhd h3{
+ 
+        color: white;
+        font-size: 10px;
+       }
+       #accordionTxt p{
+        width: auto;
+        color: black;
+        font-size: 10px;
+        padding: 10px;
+       }
+       fieldset legend{
+        font-size: 16px;
+        font-weight: bold;
+    }
+}
+#accordionTxt p{
+ width: auto;
+ color: black;
+ font-size: 14px;
+ padding: 10px;
+}
+
+.accordionhd{
+    background-color: #008000;
+    color: white;
+    width: 100%;
+    height: 36px;
+    cursor: pointer;
+    position: relative;
+    align-items: start;
+    padding: 10px;
+    text-align: start;
+    margin-top: 10px;
+  
+    
+}
+#obtn{
+   position: absolute;
+   right: 15px;
+   top: 1px;
+   height: 100%;
+   width: 5%;
+   background: none;
+   cursor: pointer;
+   border-style: none;
+}
+
+#cbtn{
+    position: absolute;
+    right: 15px;
+    top: 1px;
+    height: 100%;
+   width: 5%;
+    cursor: pointer;
+    display: none;
+    border-style: none;
+    background: none;
+ }
+#accordionTxt{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: greenyellow;
+    display: none;
+    
+}
+
+
+.accordionhd1 h3{
+ 
+    color: white;
+    font-size: 14px;
+   }
+   @media (max-width: 600px) {
+       .accordionhd1 h3{
+    
+           color: white;
+           font-size: 12px;
+          }
+          #accordionTxt1 p{
+           width: auto;
+           color: black;
+           font-size: 10px;
+           padding: 10px;
+          }
+          
+   }
+   #accordionTxt1 p{
+    width: auto;
+    color: black;
+    font-size: 14px;
+    padding: 10px;
+   }
+   
+   .accordionhd1{
+       background-color: #008000;
+       color: white;
+       width: 100%;
+       height: 36px;
+       cursor: pointer;
+       position: relative;
+       align-items: start;
+       padding: 10px;
+       text-align: start;
+       margin-top: 10px;
+     
+       
+   }
+   #obtn1{
+      position: absolute;
+      right: 15px;
+      top: 1px;
+      height: 100%;
+      width: 5%;
+      background: none;
+      cursor: pointer;
+      border-style: none;
+   }
+   
+   #cbtn1{
+       position: absolute;
+       right: 15px;
+       top: 1px;
+       height: 100%;
+      width: 5%;
+       cursor: pointer;
+       display: none;
+       border-style: none;
+       background: none;
+    }
+   #accordionTxt1{
+       position: relative;
+       width: 100%;
+       height: 100%;
+       background-color: greenyellow;
+       display: none;
+       
+   }
+
+   .accordionhd2 h3{
+ 
+    color: white;
+    font-size: 14px;
+   }
+   @media (max-width: 600px) {
+       .accordionhd2 h3{
+    
+           color: white;
+           font-size: 12px;
+          }
+          #accordionTxt2 p{
+           width: auto;
+           color: black;
+           font-size: 10px;
+           padding: 10px;
+          }
+          
+   }
+   #accordionTxt2 p{
+    width: auto;
+    color: black;
+    font-size: 14px;
+    padding: 10px;
+   }
+   
+   .accordionhd2{
+       background-color: #008000;
+       color: white;
+       width: 100%;
+       height: 36px;
+       cursor: pointer;
+       position: relative;
+       align-items: start;
+       padding: 10px;
+       text-align: start;
+       margin-top: 10px;
+     
+       
+   }
+   #obtn2{
+      position: absolute;
+      right: 15px;
+      top: 1px;
+      height: 100%;
+      width: 5%;
+      background: none;
+      cursor: pointer;
+      border-style: none;
+   }
+   
+   #cbtn2{
+       position: absolute;
+       right: 15px;
+       top: 1px;
+       height: 100%;
+      width: 5%;
+       cursor: pointer;
+       display: none;
+       border-style: none;
+       background: none;
+    }
+   #accordionTxt2{
+       position: relative;
+       width: 100%;
+       height: 100%;
+       background-color: greenyellow;
+       display: none;
+       
+   }
+
+   .accordionhd3 h3{
+ 
+    color: white;
+    font-size: 14px;
+   }
+   @media (max-width: 600px) {
+       .accordionhd3 h3{
+    
+           color: white;
+           font-size: 12px;
+          }
+          #accordionTxt3 p{
+           width: auto;
+           color: black;
+           font-size: 10px;
+           padding: 10px;
+         
+          }
+      }
+   #accordionTxt3 p{
+    width: auto;
+    color: black;
+    font-size: 14px;
+    padding: 10px;
+   }
+   
+   .accordionhd3{
+       background-color: #008000;
+       color: white;
+       width: 100%;
+       height: 36px;
+       cursor: pointer;
+       position: relative;
+       align-items: start;
+       padding: 10px;
+       text-align: start;
+       margin-top: 10px;
+     
+       
+   }
+   #obtn3{
+      position: absolute;
+      right: 15px;
+      top: 1px;
+      height: 100%;
+      width: 5%;
+      background: none;
+      cursor: pointer;
+      border-style: none;
+   }
+   
+   #cbtn3{
+       position: absolute;
+       right: 15px;
+       top: 1px;
+       height: 100%;
+      width: 5%;
+       cursor: pointer;
+       display: none;
+       border-style: none;
+       background: none;
+    }
+   #accordionTxt3{
+       position: relative;
+       width: 100%;
+       height: 100%;
+       background-color: greenyellow;
+       display: none;
+       
+   }
+
+   .accordionhd4 h3{
+ 
+    color: white;
+    font-size: 14px;
+   }
+   @media (max-width: 600px) {
+       .accordionhd4 h3{
+    
+           color: white;
+           font-size: 12px;
+          }
+          #accordionTxt4 p{
+           width: auto;
+           color: black;
+           font-size: 10px;
+           padding: 10px;
+          }
+          fieldset legend{
+           font-size: 16px;
+           font-weight: bold;
+       }
+   }
+   #accordionTxt4 p{
+    width: auto;
+    color: black;
+    font-size: 14px;
+    padding: 10px;
+   }
+   
+   .accordionhd4{
+       background-color: #008000;
+       color: white;
+       width: 100%;
+       height: 36px;
+       cursor: pointer;
+       position: relative;
+       align-items: start;
+       padding: 10px;
+       text-align: start;
+       margin-top: 10px;
+     
+       
+   }
+   #obtn4{
+      position: absolute;
+      right: 15px;
+      top: 1px;
+      height: 100%;
+      width: 5%;
+      background: none;
+      cursor: pointer;
+      border-style: none;
+   }
+   
+   #cbtn4{
+       position: absolute;
+       right: 15px;
+       top: 1px;
+       height: 100%;
+      width: 5%;
+       cursor: pointer;
+       display: none;
+       border-style: none;
+       background: none;
+    }
+   #accordionTxt4{
+       position: relative;
+       width: 100%;
+       height: 100%;
+       background-color: greenyellow;
+       display: none;
+       
+   }
+   
+   
+/*PROJECTS SECTION*/
+/* image slider*/
+.websites h2{
+    color: green;
+    text-align: center;
+    margin-bottom: 8px;
+    z-index: 3;
+    margin-top: 50px;
+}
+.websites p{
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    z-index: 3;
+    text-align: center;
+    align-items: center;
+
+}
+.websites{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   z-index: 2;
+   background-color: var(--silver-color);
+   margin-top: -25px;
+}
+.box{
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+.swiper{
+    
+    width: 80%;
+    height: 500px;
+    
+    
+    
+}
+.swiper-slide{
+    overflow-y: auto;
+}
+.swiper-slide img{
+    
+    width: 100%;
+    height:auto;
+   
+   
+}
+.swiper-wrapper{
+    border-radius: 15px;
+    
+   
+    
+}
+.swiper .swiper-button-prev{
+     color: green;
+     
+}
+.swiper .swiper-button-next{
+     color: green;
+   
+}
+.swiper .swiper-pagination-bullet-active{
+    background-color: green;
+}
+.websites button{
+    display: block;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    background-color: green;
+    color: var(--secondary-color);
+    font-size: 12px;
+    border: none;
+    padding: 5px 6px;
+    border-radius: 30px;
+    box-shadow: 2px 2px 2px rgba(31, 29, 29, 0.5);
+    flex-shrink: 0;
+    min-width: 90px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+.websites button:hover{
+    opacity: 0.8;
+    background-color: greenyellow;
+    color: black;
+}
+/*TESTIMONY SECTION*/
+.tester-section{
+    background-color: var(--silver-color);
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 30px;
+    
+}
+.tester-section h2{
+   text-align: center;
+   color: green;
+   margin-top: 20px;
+   
+}
+
+.tester-section h3{
+text-align: center;
+
+}
+.testerp{
+    margin-top: 10px;
+    align-items: center;
+    text-align: center;
+}
+
+.testers{
+    padding-top: 20px;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 0px;
+    background-repeat: none;
+    background-size: cover;
+    padding-top: 0;
+    word-wrap: wrap;
+}
+
+.tester-card1, .tester-card2, .tester-card3{
+  margin-top: 120px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  background: linear-gradient(rgb(153, 146, 146), rgb(46, 39, 39));
+  height: 400px;
+  width: 280px;
+  min-width: 280px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 200px;
+  border-bottom-right-radius: 200px;
+  box-shadow: 0px 8px 0px rgb(119, 114, 114),
+              inset 0px -8px 0px var(--primary-color);
+}
+.tester-card2{
+    background: linear-gradient( rgb(158, 211, 158), rgb(40, 59, 40));
+    box-shadow: 0px 8px 0px rgb(105, 129, 105),
+                inset 0px -8px 0px var(--primary-color);
+                
+}
+.tester-card3{
+    background: linear-gradient(rgb(172, 159, 185), rgb(92, 80, 105));
+    box-shadow: 0px 8px 0px  rgb(138, 125, 151),
+                inset 0px -8px 0px var(--primary-color);
+              
+}
+
+.tester-img-house{
+ background-color: var(--primary-color);
+ height: 76px;
+ width: 160px;
+ position: absolute;
+ margin: 0px;
+ left: 60px;
+ top: 0;
+ border-bottom-left-radius: 150px;
+ border-bottom-right-radius: 150px;
+ 
+}
+
+
+
+.clockinga{
+    height: 1px;
+    width: 168px;
+    position: absolute;
+    top: 76px;
+    left: -10px;
+    animation-name: roll;
+    animation-iteration-count: 1;
+    animation: 60s roll infinite linear;
+    transition: ease;
+  }
+  @keyframes roll {
+    from{
+      transform: rotate(0);
+  }
+  to{
+     transform: rotate(360deg);
+  }
+  }
+  .clocking0a{
+    height: 168px;
+    width: 1px;
+    position: absolute;
+    top: -9.5px;
+    left: 75px;
+    animation-name: roll;
+    animation-iteration-count: 1;
+    animation: 60s roll infinite linear;
+    transition: ease;
+  }
+  
+  @keyframes roll {
+    from{
+      transform: rotate(0);
+  }
+  to{
+     transform: rotate(360deg);
+  }
+  }
+  
+  
+  .clocking1a{
+    position: absolute;
+    background-color: green;
+    width: 10px;
+    height: 10px;
+    border-radius: 100px;
+    left: 1px;
+    top: -4px;
+  }
+  .clocking2a{
+    position: absolute;
+    background-color: var(--secondary-color);
+    width: 10px;
+    height: 10px;
+    border-radius: 100px;
+    top: 4px;
+    right: 0px;
+  }
+  .clocking0a .clocking1a{
+    position: absolute;
+    background-color: blueviolet;
+    width: 10px;
+    height: 10px;
+    border-radius: 100px;
+    left: -4px;
+    top: 0px;
+  }
+  .clocking0a .clocking2a{
+    position: absolute;
+    background-color:  blue;
+    width: 10px;
+    height: 10px;
+    border-radius: 100px;
+    top: 158px;
+    left: -4px;
+  }
+
+
+
+
+.tester-card-right1{
+    background-color: rgb(241, 247, 241, 0);
+    position: absolute;
+    margin: 0px;
+    height: 20px;
+    width: 20px;
+    left: 40px;
+    top: 0px;
+    border-radius: 100px;
+    box-shadow: 7px -11px 0px var(--primary-color);
+}
+.tester-card-right2{
+    background-color: rgb(207, 207, 221, 0);
+    position: absolute;
+    margin: 0px;
+    height: 20px;
+    width: 20px;
+    left: 40px;
+    top: 0px;
+    border-radius: 100px;
+    box-shadow: 7px -11px 0px var(--primary-color);
+}
+.tester-card-left2{
+    background-color: rgb(216, 216, 226, 0);
+    position: absolute;
+    margin: 0px;
+    height: 20px;
+    width: 20px;
+    right: 40.4px;
+    top: 0px;
+    border-radius: 100px;
+    box-shadow: -9px -9px 0px var(--primary-color);
+}
+.tester-card-left3{
+    background-color: rgb(225, 221, 230, 0);
+    position: absolute;
+    margin: 0px;
+    height: 20px;
+    width: 20px;
+    right: 40.4px;
+    top: 0px;
+    border-radius: 100px;
+    box-shadow: -9px -9px 0px var(--primary-color);
+}
+.tester-card-right3{
+    background-color: rgb(208, 200, 216, 0);  
+    position: absolute;
+    margin: 0px;
+    height: 20px;
+    width: 20px;
+    left: 40px;
+    top: 0px;
+    border-radius: 100px;
+    box-shadow: 7px -11px 0px var(--primary-color);
+}
+.tester-card-left1{
+    background-color: rgb(215, 226, 215, 0);
+    position: absolute;
+    margin: 0px;
+    height: 20px;
+    width: 20px;
+    right: 40.4px;
+    top: 0px;
+    border-radius: 100px;
+    box-shadow: -9px -9px 0px var(--primary-color);
+}
+.tester-img-container1{
+    position: absolute;
+    height: 150px;
+    width: 150px;
+    margin: 0px;
+    left: 65px;
+    top: -80px;
+    border-radius: 150px;
+    background: linear-gradient(rgb(153, 146, 146), rgb(46, 39, 39));
+    z-index: 5;
+}
+.tester-img-container2{
+    position: absolute;
+    height: 150px;
+    width: 150px;
+    margin: 0px;
+    left: 65px;
+    top: -80px;
+    border-radius: 150px;
+    background: linear-gradient( rgb(158, 211, 158), rgb(40, 59, 40));
+    z-index: 5;
+}
+.tester-img-container3{
+    position: absolute;
+    height: 150px;
+    width: 150px;
+    margin: 0px;
+    left: 65px;
+    top: -80px;
+    border-radius: 150px;
+    background: linear-gradient(rgb(172, 159, 185), rgb(92, 80, 105));
+    z-index: 5;
+}
+.tester-img-container1 img{
+    height: 150px;
+    width: 150px;
+    margin: 0px;
+    border-radius: 150px;
+}
+.tester-img-container2 img{
+    height: 150px;
+    width: 150px;
+    margin: 0px;
+    border-radius: 150px;
+}
+.tester-img-container3 img{
+    height: 150px;
+    width: 150px;
+    margin: 0px;
+    border-radius: 150px;
+}
+.tester-details{
+    position: absolute;
+    left: 0;
+    top: 80px;
+    height: 300px;
+    overflow: none;
+    border-bottom-left-radius: 200px;
+  border-bottom-right-radius: 200px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  text-wrap: wrap;
+}
+.tester-details h2{
+    margin-top: -7px;
+    margin-left: -8px;
+    margin-bottom: 2px;
+    font-size: 16px;
+    text-align: center;
+    color: var(--primary-color);
+    
+}
+.tester-details h3{
+    margin-top: 0px;
+    margin-bottom: 0;
+    font-size: 13px;
+    text-align: center;
+    color: var(--primary-color);
+    margin-left: 0px;
+}
+.tester-details p{
+    margin-top: 4px;
+    margin-bottom: 0;
+    font-size: 12px;
+    width: auto;
+    text-align: center;
+    color: var(--primary-color);
+
+}
+/*POPUP FORM*/
+.popup-form{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    background-color: rgba(134, 127, 127, 0.4);
+    width: 100vw;
+    height: 100vh;
+    
+  }
+  .form-holder{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    width: 80%;
+    height: auto;
+    max-width: 300px;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(green, greenyellow);
+    padding: 20px;
+    border-radius: 15px;
+   text-align: center;
+  }
+  .popup-form form{
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    padding: 2vw 4vw;
+    width: 100%;
+    border-radius: 15px;
+    max-width: 400px;
+    justify-content: center;
+    align-items: center;
+
+  }
+  .popup-form  form div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: relative;
+  }
+  .popup-form form svg{
+    position: absolute;
+    left: 1px;
+    top: 2px;
+    
+  }
+  .popup-form input{
+    width: 220px;
+    height: 24px;
+    max-width: 220px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    display: inline;
+    padding-left: 24px;
+    border-radius: 5px;
+    border-style: none;
+
+  }
+  .popup-form textarea{
+    width: 220px;
+    max-width: 220px;
+    height: auto;
+    max-height: 140px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    padding-top: 22px;
+    padding-left: 2px;
+    border-style: none;
+    border-radius: 8px;
+    
+  }
+  .popup-form  .send-btn{
+    background-color: green;
+    padding: 5px 15px;
+    border-radius: 5px;
+    border-style: none;
+    color: white;
+    cursor: pointer;
+    transition: ease-in-out;
+    margin-top: 10px;
+    width: 250px;
+    max-width: 220px;
+    border-style: solid;
+    border-color: green;
+    border-width: 1px;
+  }
+  .popup-form  button:hover{
+    opacity: 0.9;
+  }
+  .popup-form .close-btn{
+    position: absolute;
+    top: 9px;
+    right: 9px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    background-color: rgb(7, 185, 7, 0.1);
+    border-style: solid;
+    border-color: white;
+    cursor: pointer;
+  }
+
+  .popup-form h3{
+    text-align: center;
+    color: white;
+  }
+
+
+ .square-trail {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	pointer-events: none;
+    z-index: 999;
+}
+
+.square {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 6px;
+	height: 6px;
+	background-color: green;
+	pointer-events: none;
+    z-index: 2000px;
+    border-radius: 10px;
+    pointer-events: none;
+    /*transform: translate(-50%, -50%);*/
+    animation: squared 1s linear;
+    opacity: 0;
+}
+@keyframes squared {
+    0% {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -3000%);
+        opacity: 0;
+        filter: hue-rotate(720deg);}
+  }
+
+
+
+ 
